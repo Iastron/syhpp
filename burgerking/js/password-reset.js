@@ -59,5 +59,11 @@ resetForm.addEventListener('submit', event => {
     submitNotice.hidden = false;
 });
 
+// 메인 페이지의 화면 2 링크에서는 디자인 확인용 예시 값만 채운다.
+if (new URLSearchParams(window.location.search).get('preview') === 'filled') {
+    passwordInput.value = 'Demo123!';
+    confirmInput.value = 'Demo123!';
+}
+
 window.addEventListener('pageshow', validatePassword);
 validatePassword();
