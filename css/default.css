@@ -1,0 +1,234 @@
+/* ============================================================
+   reset.css
+   Responsive Reset — Mobile / iOS / Android / Desktop
+   ============================================================ */
+
+
+/* ------------------------------------------------------------
+   1. Box Sizing
+   ------------------------------------------------------------ */
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+
+/* ------------------------------------------------------------
+   2. Reset Margin & Padding
+   ------------------------------------------------------------ */
+* {
+  margin: 0;
+  padding: 0;
+}
+
+
+/* ------------------------------------------------------------
+   3. Root / HTML
+   ------------------------------------------------------------ */
+html {
+  -webkit-text-size-adjust: 100%;
+  text-size-adjust: 100%;
+  /* scroll-behavior는 전역 설정 대신 필요한 곳에 개별 적용 권장 */
+}
+
+
+/* ------------------------------------------------------------
+   4. Body
+   ------------------------------------------------------------ */
+body {
+  min-height: 100dvh;
+  line-height: 1.5;
+  text-rendering: optimizeSpeed;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  overflow-x: hidden;
+}
+
+/* overflow-x 양쪽 차단 */
+html {
+  overflow-x: hidden;
+}
+
+
+/* ------------------------------------------------------------
+   5. Typography
+   ------------------------------------------------------------ */
+h1, h2, h3, h4, h5, h6, p {
+  overflow-wrap: break-word;
+  word-break: keep-all; /* 한국어 줄바꿈 최적화 */
+}
+
+
+/* ------------------------------------------------------------
+   6. Lists
+   ------------------------------------------------------------ */
+ul,
+ol {
+  list-style: none;
+}
+
+
+/* ------------------------------------------------------------
+   7. Links
+   ------------------------------------------------------------ */
+a {
+  color: inherit;
+  text-decoration: none;
+}
+
+
+/* ------------------------------------------------------------
+   8. Media
+   ------------------------------------------------------------ */
+img,
+picture,
+video,
+canvas,
+svg {
+  display: block;
+  max-width: 100%;
+  vertical-align: middle; /* 인라인 이미지 하단 틈새 제거 */
+}
+
+/* 이미지 비율 유지 */
+img {
+  height: auto;
+}
+
+
+/* ------------------------------------------------------------
+   9. Form Elements
+   ------------------------------------------------------------ */
+input,
+button,
+textarea,
+select {
+  font: inherit;
+  color: inherit;
+  background: none;
+  border: none;
+  padding: 0;
+}
+
+/* iOS 기본 스타일 제거 */
+button,
+input[type="button"],
+input[type="submit"],
+input[type="reset"],
+input,
+textarea,
+select {
+  appearance: none;
+  -webkit-appearance: none;
+  border-radius: 0;
+}
+
+/* 버튼 커서 */
+button,
+[type="button"],
+[type="submit"],
+[type="reset"],
+[role="button"] {
+  cursor: pointer;
+}
+
+/* Textarea */
+textarea {
+  resize: vertical;
+}
+
+/* Remove iOS input inner shadow */
+input:not([type="range"]),
+textarea {
+  -webkit-appearance: none;
+}
+
+
+/* ------------------------------------------------------------
+   10. Tables
+   ------------------------------------------------------------ */
+table {
+  border-collapse: collapse;
+  border-spacing: 0;
+}
+
+
+/* ------------------------------------------------------------
+   11. Accessibility
+   ------------------------------------------------------------ */
+/* 포커스 링 — 완전 제거 대신 커스텀 유지 (접근성) */
+:focus {
+  outline: none;
+}
+:focus-visible {
+  outline: 2px solid currentColor;
+  outline-offset: 2px;
+}
+
+/* 스크린리더 전용 숨김 유틸 */
+.sr-only {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0, 0, 0, 0);
+  white-space: nowrap;
+  border: 0;
+}
+
+/* 모션 감소 설정 대응 */
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
+}
+
+/* hidden 속성 보장 */
+[hidden] {
+  display: none !important;
+}
+
+
+/* ------------------------------------------------------------
+   12. Touch / Tap 최적화
+   ------------------------------------------------------------ */
+a,
+button {
+  -webkit-tap-highlight-color: transparent;
+}
+
+button,
+a,
+input,
+select,
+textarea {
+  touch-action: manipulation;
+}
+
+
+/* ------------------------------------------------------------
+   13. Inherit (선택적)
+   ------------------------------------------------------------ */
+/* 일부 브라우저에서 상속 누락 보완 */
+fieldset {
+  border: none;
+}
+
+legend {
+  padding: 0;
+}
+
+/* hr 기본 스타일 초기화 */
+hr {
+  border: none;
+  border-top: 1px solid currentColor;
+  margin: 0;
+}
