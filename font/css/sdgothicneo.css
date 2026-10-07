@@ -1,0 +1,24 @@
+
+@font-face {
+	font-family: 'Sandoll GothicNeoRound';
+	font-weight: 300;
+	font-style: normal;
+	font-display: swap;
+	src: url('../SDGothicNeoRound-eMd.woff') format('woff');
+}
+
+@font-face {
+	font-family: 'Sandoll GothicNeoRound';
+	font-weight: 700;
+	font-style: normal;
+	font-display: swap;
+	src: url('../SDGothicNeoRound-gBd.woff') format('woff');
+}
+
+@font-face {
+	font-family: 'Sandoll GothicNeoRound';
+	font-weight: 800;
+	font-style: normal;
+	font-display: swap;
+	src: url('../SDGothicNeoRound-hEb.woff') format('woff');
+}
