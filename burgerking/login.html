@@ -1,0 +1,308 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="../font/css/pretendardvariable.css">
+    <link rel="stylesheet" href="../font/css/bkbulmatpro.css">
+    <link rel="stylesheet" href="../font/css/sdgothicneo.css">
+    <link rel="stylesheet" href="../css/default.css">
+    <title>버거킹 로그인 화면</title>
+    <style>
+        :root {
+            --font: "Sandoll GothicNeoRound", sans-serif;
+            --font-pre: "Pretendard Variable", sans-serif;
+            --font-BKR: "BKR", sans-serif;
+            --primary: #512314;
+            --focus: #D62302;
+            --baseBorder: #D9CFC6;
+            --inputBg: #FFFCF9;
+            --errorColor: #C54734;
+            --placeholder: #EBE6E2;
+            --text: #766053;
+            --bg: #F4EBDC;
+            --button: #E9DDCD;
+        }
+        html {
+            font-size: 62.5%;
+        }
+        /* 전체 텍스트 속성 */
+        body {
+            background-color: var(--bg);
+            font-family: var(--font);
+            font-size: 1.6rem;
+            color: var(--primary);
+        } 
+        a {
+            color: inherit;
+        }
+        #wrap {
+            width: 100%;
+            max-width: 1024px;
+            min-width: 360px;
+            min-height: 100dvh;
+            /* margin-left: auto;
+            margin-right: auto; */
+            margin: 0 auto;
+            background-color: var(--bg);
+        }
+        header {
+            position: relative;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            /* 자식요소에 absolute가 적용 되어 위치값이 들어가는 순간 flex속성으로 적용불가 */
+            height: 48px;
+        }
+        .prev_btn {
+            position: absolute;
+            left: 0;
+            width: 48px;
+            height: 48px;
+            background: url(img/back_icon.svg) no-repeat scroll center / auto;
+        }
+        h1 {
+            font-size: 2.0rem;
+        }
+        main {
+            padding: 48px 20px 90px;
+        }
+        .title {
+            display: flex;
+            flex-direction: column;
+            gap: 16px;
+            /* margin-top: 48px; */
+            margin-bottom: 50px;
+            font-family: var(--font-BKR);
+        }
+        /* .title > span {
+            display: block;
+            background-color: yellow;
+        } */ 
+        .title > span:first-child {
+            font-size: 2.5rem;
+            line-height: 1;
+        }        
+        .title > span:last-child {
+            font-size: 3.5rem;
+            line-height: 1;
+        }        
+        input {
+            border: 1px solid var(--baseBorder);
+            background-color: var(--inputBg);
+        }
+        input::placeholder {
+            color: var(--placeholder);
+        }
+        .email {
+            font-size: 1.5rem;
+            line-height: 1;
+        }
+        input[type="email"] {
+            margin-top: 8px;
+        }
+        input[type="password"] {
+            margin-top: 10px;
+        }
+        input[type="email"],
+        input[type="password"] {
+            /* input요소는 기본적으로 inline-block속성을 가짐 */
+            width: 100%;
+            height: 50px;
+            padding: 0 20px;
+            border-radius: 10px;
+        }
+
+        .input_box.rela {
+            position: relative;
+        }
+        .pw_btn {
+            position: absolute;
+            right: 20px;
+            bottom: 12px;
+            width: 26px;
+            height: 26px;
+            background: url(img/eye_icon.svg) no-repeat center / 26px;
+        }
+
+        .login_option {
+            margin-top: 12px;
+        }
+
+        .login_option label {
+            /* label요소가 span요소를 정확히 감싸기 위해 적용 */
+            display: inline-flex;
+        }
+
+        .login_option label:first-child {
+            margin-right: 30px;
+        }
+
+        .login_option span {
+            /* 각각의 span을 좌우 정렬하기 위해 inline-flex사용 */
+            display: inline-flex;
+            align-items: center;
+            column-gap: 6px;
+        }        
+
+        .login_option .check + span::before {
+            content: "";
+            display: inline-block;
+            width: 30px;
+            height: 30px;
+            background: url(img/checkBox_disabled.svg) no-repeat center / contain;
+        }
+        .login_option .check:checked + span:before {
+            content: "";
+            background-image: url(img/checkBox_active.svg);
+        }
+
+        /* button요소는 기본적으로 상속이 불가하여 상속에 관련된 값을 따로 넣어야 함 */
+        .login_btn {
+            width: 100%;
+            height: 44px;
+            border-radius: 22px;
+            font-family: inherit;
+            font-size: inherit;
+            color: var(--placeholder);
+            background-color: var(--primary);
+            border: none;
+            opacity: 0.2;
+        }
+        a {
+            text-decoration: none;
+        }
+        .login_link {
+            margin-top: 20px;
+            font-family: var(--font-pre);
+            font-weight: 500;
+            font-size: 1.4rem;
+            text-align: center;
+        }
+        .login_link a {
+            display: inline-flex;
+            align-items: center;
+            column-gap: 4px;
+        }
+        .login_link a::after {
+            content: "";
+            display: inline-block;
+            width: 1px;
+            height: 12px;
+            background-color: var(--primary);
+            opacity: 0.5;
+        }
+        .login_link a:last-child::after {
+            content: "";
+            display: none;
+        }
+        .sns_login {
+            margin-top: 96px;
+        }
+        .sns_login > p {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            column-gap: 12px;
+            margin-bottom: 35px;
+            font-size: 1.3rem;
+            color: var(--text);
+            /* 줄바꿈을 하지않겠다 */
+            white-space: nowrap;
+        }
+        .sns_login > p::before,
+        .sns_login > p::after {
+            content: "";
+            display: inline-block;
+            width: 100%;
+            height: 1px;
+            background-color: var(--primary);
+            opacity: 0.3;
+        }
+        .sns_list {
+            display: flex;
+            justify-content: center;
+            column-gap: 20px;
+        }
+        .sns_list > a {
+            display: block;
+            width: 45px;
+            height: 45px;
+            background-repeat: no-repeat;
+            background-position: center;
+            background-size: 45px;
+        }
+        .sns_list > a:first-child {
+            background-image: url(img/kakao_logo_icon.svg);
+        }
+        .sns_list > a:nth-child(2) {
+            background-image: url(img/naver_logo_icon.svg);
+        }
+        .sns_list > a:nth-child(3) {
+            background-image: url(img/apple_logo_icon.svg);
+        }
+        .sns_list > a:last-child {
+            background-image: url(img/samsung_logo_icon.svg);
+        }
+       /* header {
+            background-color: darkgreen;
+            text-align: center;
+        } */ 
+    </style>
+</head>
+<body>
+    <div id="wrap">
+        <header>
+            <h1>로그인</h1>
+            <button class="prev_btn"><span class="sr-only">이전버튼</span></button> 
+        </header>
+        <main>
+            <h2 class="title">
+                <span>안녕하세요:)</span>
+                <span>버거킹입니다.</span>
+            </h2>
+            <form action="">
+                <!-- 이메일 로그인 -->
+                <fieldset>
+                    <legend class="sr-only">로그인화면</legend>
+                    <!-- 아이디 -->
+                    <label for="email" class="email">이메일 로그인</label>
+                    <div class="input_box">
+                        <input type="email" id="email" name="email" placeholder="아이디(이메일)을 입력해 주세요">
+                    </div>
+                    <!-- 비밀번호 -->
+                    <div class="input_box rela">
+                        <input type="password" name="password" placeholder="비밀번호를 입력해 주세요">
+                        <button type="button" class="pw_btn"><span class="sr-only">비밀번호 보기</span></button>
+                    </div>
+                    <div class="login_option">
+                        <label>
+                            <input type="checkbox" class="check sr-only" checked>
+                            <span>자동 로그인</span>
+                        </label>
+                        <label>
+                            <input type="checkbox" class="check sr-only">
+                            <span>아이디 저장</span>
+                        </label>
+                    </div>
+                    <button type="submit" class="login_btn">로그인</button>
+                </fieldset>
+            </form>        
+            <div class="login_link">
+                <a href="#">아이디 찾기</a>
+                <a href="#">비밀번호 재설정</a>
+                <a href="#">회원가입</a>
+            </div>  
+            <div class="sns_login">
+                <p>SNS으로 간편하게 로그인</p>
+                <div class="sns_list">
+                    <a href="#"><span class="sr-only">카카오로그인</span></a>
+                    <a href="#"><span class="sr-only">네이버로그인</span></a>
+                    <a href="#"><span class="sr-only">애플로그인</span></a>
+                    <a href="#"><span class="sr-only">삼성카드로그인</span></a>
+                </div>
+            </div>   
+        </main>
+    </div> 
+</body>
+</html>
