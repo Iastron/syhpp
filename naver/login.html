@@ -1,0 +1,223 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="../font/css/sdgothicneo.css">
+    <link rel="stylesheet" href="../font/css/notosanskrvariable.css">
+    <link rel="stylesheet" href="../css/default.css">
+    <title>네이버 리뉴얼 로그인 화면</title>
+    <style>
+        :root {
+            --font: "Sandoll GothicNeoRound", sans-serif;
+            --font-noto: "Noto Sans KR", sans-serif;
+            --primary: #088D14;
+            --focus: #01E324;
+            --link: #68C07F;
+            --text: #B2B2B2;
+            --bg: #1F1F1F;
+            --buttonText: #EBE6E2;
+        }
+        html {
+            font-size: 62.5%;
+        }
+        body {
+            font-family: var(--font);
+            font-size: 1.6rem;
+            color: var(--text);
+            background-color: #FFFFFF;
+        }
+        #wrap {
+            width: 100%;
+            max-width: 402px;
+            min-height: 874px;
+            margin: 0 auto;
+            background-color: var(--bg);
+        }
+        header {
+            position: relative;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 48px;
+            margin: 0 6px;
+        }
+        .prev_btn {
+            position: absolute;
+            left: 3px;
+            width: 48px;
+            height: 48px;
+            background: url(image/back_icon.svg) no-repeat center / auto;
+        }
+        main {
+            padding: 42px 23.5px 40px;
+        }
+        .title {
+            width: 144px;
+            height: 33px;
+            margin: 0 auto 42px;
+        }
+        .title img {
+            width: 144px;
+            height: 33px;
+        }
+        .input_box {
+            width: 100%;
+            max-width: 350px;
+            height: 29px;
+            margin: 0 auto;
+            background: url(image/input_line.svg) repeat-x left bottom;
+        }
+        .input_box + .input_box {
+            margin-top: 75px;
+        }
+        .input_box input {
+            display: block;
+            width: 100%;
+            height: 29px;
+            padding: 0 2px 5px;
+            font-size: 1.8rem;
+            font-weight: 700;
+            line-height: 1.2;
+            caret-color: var(--focus);
+        }
+        .input_box input::placeholder {
+            color: var(--text);
+            opacity: 1;
+        }
+        .login_btn {
+            width: 100%;
+            height: 50px;
+            margin-top: 42px;
+            border-radius: 8px;
+            font-size: 1.6rem;
+            font-weight: 700;
+            color: var(--buttonText);
+            background-color: var(--primary);
+        }
+        .passkey_btn {
+            display: flex;
+            align-items: flex-start;
+            gap: 3px;
+            width: max-content;
+            min-height: 44px;
+            margin: 34.5px auto 0;
+            padding: 7.5px 0;
+            font-size: 1.8rem;
+            font-weight: 700;
+            line-height: 21px;
+        }
+        .passkey_btn > span:last-child {
+            padding-top: 8px;
+        }
+        /* Figma 원본 이미지의 표시 영역과 잘림 비율 유지 */
+        .passkey_icon {
+            position: relative;
+            display: block;
+            width: 29px;
+            height: 29px;
+            overflow: hidden;
+        }
+        .passkey_icon img {
+            position: absolute;
+            top: -7.69%;
+            left: -25%;
+            width: 134.62%;
+            max-width: none;
+            height: 134.62%;
+        }
+        .login_link {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            width: 249px;
+            max-width: 100%;
+            margin: 22.5px auto 0;
+            font-family: var(--font-noto);
+            font-size: 1.4rem;
+            font-weight: 500;
+            line-height: 20px;
+        }
+        .login_link a {
+            position: relative;
+            padding: 12px 0;
+        }
+        .login_link a:not(:last-child)::after {
+            content: "";
+            position: absolute;
+            top: 50%;
+            right: -21px;
+            width: 20px;
+            height: 1px;
+            background: url(image/link_line.svg) no-repeat center;
+            transform: rotate(-90deg);
+        }
+        .login_link a:last-child {
+            color: var(--link);
+        }
+        :focus-visible {
+            outline-color: var(--focus);
+        }
+        .login_notice {
+            margin-top: 24px;
+            font-family: var(--font-noto);
+            font-size: 1.4rem;
+            line-height: 1.6;
+        }
+        @media (max-width: 402px) {
+            #wrap {
+                min-height: 100dvh;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div id="wrap">
+        <header>
+            <h1 class="sr-only">네이버 로그인</h1>
+            <a href="../index.html" class="prev_btn"><span class="sr-only">메인 페이지로 돌아가기</span></a>
+        </header>
+        <main>
+            <h2 class="title"><img src="image/naver_logo.png" alt="NAVER" width="144" height="33"></h2>
+            <form method="post">
+                <fieldset>
+                    <legend class="sr-only">네이버 로그인 정보</legend>
+                    <div class="input_box">
+                        <label for="user_id" class="sr-only">아이디 또는 전화번호</label>
+                        <input type="text" id="user_id" placeholder="아이디 또는 전화번호" autocomplete="username" autocapitalize="none" spellcheck="false" required>
+                    </div>
+                    <div class="input_box">
+                        <label for="password" class="sr-only">비밀번호</label>
+                        <input type="password" id="password" placeholder="비밀번호" autocomplete="current-password" required>
+                    </div>
+                    <button type="submit" class="login_btn">로그인</button>
+                </fieldset>
+            </form>
+            <button type="button" class="passkey_btn">
+                <span class="passkey_icon" aria-hidden="true"><img src="image/passkey_icon.png" alt=""></span>
+                <span>패스키 로그인</span>
+            </button>
+            <div class="login_link">
+                <a href="https://nid.naver.com/account/find-id/profile?lang=ko_KR">아이디 찾기</a>
+                <a href="https://nid.naver.com/account/find-pw/id">비밀번호 찾기</a>
+                <a href="https://nid.naver.com/account/signup/term">회원가입</a>
+            </div>
+            <p class="login_notice" role="status" hidden></p>
+        </main>
+    </div>
+    <script>
+        // 화면 시연용: 입력한 로그인 정보는 전송하거나 저장하지 않는다.
+        const loginForm = document.querySelector('form');
+        const loginNotice = document.querySelector('.login_notice');
+        loginForm.addEventListener('submit', event => {
+            event.preventDefault();
+            loginNotice.textContent = '리뉴얼 UI 예시입니다. 실제 네이버 로그인은 제공하지 않습니다.';
+            loginNotice.hidden = false;
+        });
+        document.querySelector('.passkey_btn').addEventListener('click', () => {
+            loginNotice.textContent = '리뉴얼 UI 예시입니다. 실제 패스키 인증은 제공하지 않습니다.';
+            loginNotice.hidden = false;
+        });
+    </script>
+</body>
+</html>
