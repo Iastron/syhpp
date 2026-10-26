@@ -20,6 +20,58 @@ body {
     object-fit: cover;
 }
 
+/* 슬라이더 컨트롤 - 피그마 1안 (파란 동그라미 화살표) */
+/* 화살표 */
+.hero-sec .visual .swiper-button-prev,
+.hero-sec .visual .swiper-button-next {
+    width: 48px;
+    height: 48px;
+    margin-top: -24px;
+    border-radius: 50%;
+    background-color: #0056b8;
+    color: #fff;
+}
+.hero-sec .visual .swiper-button-prev {
+    left: 15%;
+}
+.hero-sec .visual .swiper-button-next {
+    right: 15%;
+}
+/* Swiper 14는 화살표가 svg 그림이라 svg 크기로 조절 */
+.hero-sec .visual .swiper-button-prev svg,
+.hero-sec .visual .swiper-button-next svg {
+    width: 35%;
+    height: 35%;
+}
+/* 페이지 표시 */
+.hero-sec .visual .swiper-pagination {
+    bottom: 28px;
+}
+.hero-sec .visual .swiper-pagination-bullet {
+    width: 8px;
+    height: 8px;
+    background-color: #fff;
+    opacity: 0.7;
+}
+.hero-sec .visual .swiper-pagination-bullet-active {
+    width: 24px;
+    border-radius: 4px;
+    background-color: #0056b8;
+    opacity: 1;
+}
+/* 스크롤바 */
+.hero-sec .visual .swiper-scrollbar {
+    left: 50%;
+    bottom: 12px;
+    width: 200px;
+    height: 3px;
+    transform: translateX(-50%);
+    background-color: rgba(255, 255, 255, 0.5);
+}
+.hero-sec .visual .swiper-scrollbar-drag {
+    background-color: #0056b8;
+}
+
 @media (max-width: 1024px) {
     .pc {
         display: none;
@@ -36,5 +88,17 @@ body {
     }
     .hero-sec .swiper {
         height: 100dvh;
+    }
+    .hero-sec .visual .swiper-button-prev,
+    .hero-sec .visual .swiper-button-next {
+        width: 36px;
+        height: 36px;
+        margin-top: -18px;
+    }
+    .hero-sec .visual .swiper-button-prev {
+        left: 16px;
+    }
+    .hero-sec .visual .swiper-button-next {
+        right: 16px;
     }
 }
