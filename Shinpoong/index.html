@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>신풍제약리뉴얼포트폴리오</title>
+    <link rel="stylesheet" href="../css/default.css">
+    <link rel="stylesheet" href="../../Plugin/js/swiper/swiper-bundle.min.css">
+    <link rel="stylesheet" href="../font/css/pretendardvariable.css">
+    <link rel="stylesheet" href="css/main.css">
+    <script src="../../Plugin/js/swiper/swiper-bundle.min.js"></script>
+</head>
+<body>
+    <div id="wrap">
+        <header>제목공간</header>
+        <main>
+            <div class="hero-sec">
+                <!-- Slider main container -->
+                <div class="swiper visual">
+                    <!-- Additional required wrapper -->
+                    <div class="swiper-wrapper">
+                        <!-- Slides -->
+                        <div class="swiper-slide">
+                            <img src="img/image 129.png" alt="신풍제약1" class="pc">
+                            <img src="img/129and.png" alt="모바일신풍제약1" class="mo">
+                        </div>
+                        <div class="swiper-slide">
+                            <img src="img/image 130.png" alt="신풍제약2" class="pc">
+                            <img src="img/130and.png" alt="모바일신풍제약2" class="mo">
+                        </div>
+                    </div>
+                    <!-- If we need pagination -->
+                    <div class="swiper-pagination"></div>
+
+                    <!-- If we need navigation buttons -->
+                    <div class="swiper-button-prev"></div>
+                    <div class="swiper-button-next"></div>
+
+                    <!-- If we need scrollbar -->
+                    <div class="swiper-scrollbar"></div>
+                </div>
+            </div>
+        </main>
+        <footer>&copy;</footer>
+    </div>
+    <script>
+        const swiper = new Swiper('.swiper', {
+            // Optional parameters
+            direction: 'horizontal',
+            loop: true,
+
+            // If we need pagination
+            pagination: {
+                el: '.visual .swiper-pagination',
+            },
+
+            // Navigation arrows
+            navigation: {
+                nextEl: '.visual .swiper-button-next',
+                prevEl: '.visual .swiper-button-prev',
+            },
+
+            // And if we need scrollbar
+            scrollbar: {
+                el: '.visual .swiper-scrollbar',
+            },
+        });
+    </script>
+</body>
+</html>
