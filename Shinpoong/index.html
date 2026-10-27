@@ -59,6 +59,27 @@
                     <div class="swiper-pagination"></div>
                 </div>
             </div>
+            <!-- 스크롤하는 동안 화면에 고정되고, 양옆 사진이 차례대로 앞으로 나옴 -->
+            <section class="rnd-sec">
+                <div class="rnd-inner">
+                <div class="rnd-stack left">
+                    <img src="img/image 130.png" alt="백신 연구">
+                    <img src="img/image 129.png" alt="의료 진료">
+                    <img src="img/image 130.png" alt="백신 연구">
+                </div>
+                <div class="rnd-txt">
+                    <p class="rnd-label">Research &amp; Development</p>
+                    <h2>끊임 없는 연구와 혁신으로,<br>인류의 건강한 미래를 만들어 갑니다.</h2>
+                    <p class="rnd-desc">신풍제약은 신약개발과 의약품 연구를 통해<br>치료의 가능성을 넓히고 더 나은 의료 환경을 만들어갑니다.</p>
+                    <a href="#" class="rnd-btn">더보기</a>
+                </div>
+                <div class="rnd-stack right">
+                    <img src="img/image 129.png" alt="의료 진료">
+                    <img src="img/image 130.png" alt="백신 연구">
+                    <img src="img/image 129.png" alt="의료 진료">
+                </div>
+                </div>
+            </section>
         </main>
         <footer>&copy;</footer>
     </div>
@@ -77,6 +98,43 @@
                 clickable: true,
             },
         });
+
+        // R&D 섹션: 삼천리 Who We Are처럼 스크롤 진행도(0~1)에 맞춰
+        // 사진 3장이 안쪽 깊은 곳(x, z)에서 앞으로 다가오고, 맨 앞 사진은 화면 밖으로 빠져나감
+        const rndSec = document.querySelector('.rnd-sec');
+        const rndCards = [
+            // [시작 x, 끝 x, 시작 z, 끝 z, 시작 각도, 끝 각도, 시작 투명도, 끝 투명도] (x, z는 vw)
+            [0, -120, 0, 30, -2, 12, 1, 0.3],
+            [46, -60, -35, 21, -16, 6, 0.75, 1],
+            [122, 0, -92, 0, -28, -2, 0.4, 1]
+        ];
+
+        function lerp(a, b, t) {
+            return a + (b - a) * t;
+        }
+
+        function updateRnd() {
+            const rect = rndSec.getBoundingClientRect();
+            const total = rndSec.offsetHeight - window.innerHeight;
+            const p = Math.min(Math.max(-rect.top / total, 0), 1);
+            const vw = window.innerWidth / 100;
+
+            document.querySelectorAll('.rnd-stack').forEach(function (stack) {
+                // 오른쪽은 왼쪽을 거울처럼 뒤집음
+                const dir = stack.classList.contains('right') ? -1 : 1;
+                stack.querySelectorAll('img').forEach(function (img, i) {
+                    const c = rndCards[i];
+                    const x = lerp(c[0], c[1], p) * vw * dir;
+                    const z = lerp(c[2], c[3], p) * vw;
+                    const r = lerp(c[4], c[5], p) * dir;
+                    img.style.transform = 'translate3d(' + x + 'px, 0, ' + z + 'px) rotateY(' + r + 'deg)';
+                    img.style.opacity = lerp(c[6], c[7], Math.min(p * 2, 1));
+                });
+            });
+        }
+        window.addEventListener('scroll', updateRnd);
+        window.addEventListener('resize', updateRnd);
+        updateRnd();
     </script>
 </body>
 </html>

@@ -8,6 +8,12 @@ body {
 .mo {
     display: none;
 }
+/* default.css의 overflow-x: hidden은 sticky(R&D 섹션 고정)를 깨뜨려서
+   가로 넘침만 자르고 스크롤 상자는 만들지 않는 clip으로 바꿈 */
+html,
+body {
+    overflow-x: clip;
+}
 
 /* 헤더 - 피그마 메인 (흰 로고 줄 + 초록 메뉴 줄) */
 header {
@@ -127,6 +133,89 @@ header {
     background-color: #00843d;
 }
 
+/* 두 번째 섹션 - R&D (삼천리 Who We Are 방식)
+   섹션을 300vh로 길게 두고, 안쪽(.rnd-inner)을 화면에 고정(sticky)
+   스크롤하는 동안 양옆 사진 3장이 안쪽 깊은 곳에서 차례대로 앞으로 다가옴 */
+.rnd-sec {
+    height: 300vh;
+    background-color: #fff;
+}
+.rnd-inner {
+    position: sticky;
+    top: 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    overflow: clip;
+    perspective: 1000px;
+}
+.rnd-stack {
+    position: absolute;
+    top: 50%;
+    width: 28vw;
+    aspect-ratio: 4 / 3;
+    margin-top: -10.5vw;
+    transform-style: preserve-3d;
+}
+.rnd-stack.left {
+    left: -6vw;
+    transform: rotateY(18deg);
+}
+.rnd-stack.right {
+    right: -6vw;
+    transform: rotateY(-18deg);
+}
+.rnd-stack img {
+    position: absolute;
+    inset: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    border-radius: 8px;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.15);
+    will-change: transform, opacity;
+}
+.rnd-txt {
+    position: relative;
+    z-index: 1;
+    padding: 60px 80px;
+    /* 뒤로 지나가는 사진 위에서도 글자가 읽히도록 가운데만 흰빛을 깔아 줌 */
+    background: radial-gradient(closest-side, rgba(255, 255, 255, 0.95), rgba(255, 255, 255, 0.8) 60%, rgba(255, 255, 255, 0));
+    text-align: center;
+}
+.rnd-label {
+    color: #00843d;
+    font-size: 16px;
+    font-weight: 600;
+}
+.rnd-txt h2 {
+    margin-top: 16px;
+    color: #222;
+    font-size: 36px;
+    font-weight: 700;
+    line-height: 1.4;
+}
+.rnd-desc {
+    margin-top: 20px;
+    color: #666;
+    font-size: 16px;
+    line-height: 1.7;
+}
+.rnd-btn {
+    display: inline-block;
+    margin-top: 32px;
+    padding: 8px 24px;
+    border-radius: 20px;
+    background-color: #e6f3ec;
+    color: #00843d;
+    font-size: 14px;
+}
+.rnd-btn:hover {
+    background-color: #00843d;
+    color: #fff;
+}
+
 @media (max-width: 1024px) {
     .pc {
         display: none;
@@ -158,5 +247,24 @@ header {
     }
     .hero-sec .swiper {
         height: calc(100dvh - 56px);
+    }
+    /* R&D 섹션: 고정 헤더 아래에 붙고, 사진 카드는 조금 크게 */
+    .rnd-inner {
+        top: 56px;
+        height: calc(100dvh - 56px);
+        padding: 0 20px;
+    }
+    .rnd-stack {
+        width: 40vw;
+        margin-top: -15vw;
+    }
+    .rnd-txt {
+        padding: 40px 0;
+    }
+    .rnd-txt h2 {
+        font-size: 24px;
+    }
+    .rnd-desc {
+        font-size: 14px;
     }
 }
