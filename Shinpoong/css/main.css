@@ -19,36 +19,10 @@ header {
     padding: 10px 0;
 }
 .logo a {
-    display: flex;
-    align-items: center;
-    gap: 6px;
+    display: block;
 }
-.logo-mark {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    width: 24px;
-    height: 24px;
-    border-radius: 50%;
-    background-color: #00843d;
-    color: #fff;
-    font-size: 14px;
-    font-weight: 800;
-}
-.logo-txt {
-    display: flex;
-    flex-direction: column;
-    line-height: 1.1;
-}
-.logo-txt strong {
-    color: #00843d;
-    font-size: 14px;
-    font-weight: 700;
-}
-.logo-txt small {
-    color: #00843d;
-    font-size: 8px;
-    letter-spacing: 0.02em;
+.logo img {
+    width: 160px;
 }
 .gnb {
     background-color: #00843d;
