@@ -63,9 +63,9 @@
             <section class="rnd-sec">
                 <div class="rnd-inner">
                 <div class="rnd-stack left">
-                    <img src="img/image 130.png" alt="백신 연구">
-                    <img src="img/image 129.png" alt="의료 진료">
-                    <img src="img/image 130.png" alt="백신 연구">
+                    <img src="img/rnd-left1.png" alt="백신 연구">
+                    <img src="img/rnd-left2.png" alt="연구실 실험">
+                    <img src="img/rnd-left3.png" alt="시럽 의약품">
                 </div>
                 <div class="rnd-txt">
                     <p class="rnd-label">Research &amp; Development</p>
@@ -74,9 +74,9 @@
                     <a href="#" class="rnd-btn">더보기</a>
                 </div>
                 <div class="rnd-stack right">
-                    <img src="img/image 129.png" alt="의료 진료">
-                    <img src="img/image 130.png" alt="백신 연구">
-                    <img src="img/image 129.png" alt="의료 진료">
+                    <img src="img/rnd-right1.png" alt="주사 진료">
+                    <img src="img/rnd-right2.png" alt="무균 연구실">
+                    <img src="img/rnd-right3.png" alt="피펫 실험">
                 </div>
                 </div>
             </section>
@@ -126,7 +126,8 @@
                     const c = rndCards[i];
                     const x = lerp(c[0], c[1], p) * vw * dir;
                     const z = lerp(c[2], c[3], p) * vw;
-                    const r = lerp(c[4], c[5], p) * dir;
+                    // 사진에 이미 기울기가 있어서 회전은 절반만
+                    const r = lerp(c[4], c[5], p) * dir * 0.5;
                     img.style.transform = 'translate3d(' + x + 'px, 0, ' + z + 'px) rotateY(' + r + 'deg)';
                     img.style.opacity = lerp(c[6], c[7], Math.min(p * 2, 1));
                 });

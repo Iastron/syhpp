@@ -150,30 +150,30 @@ header {
     overflow: clip;
     perspective: 1000px;
 }
+/* 사진 자체에 비스듬한 원근이 들어 있어서 상자는 살짝만 돌림 */
 .rnd-stack {
     position: absolute;
     top: 50%;
-    width: 28vw;
-    aspect-ratio: 4 / 3;
-    margin-top: -10.5vw;
+    width: 30vw;
+    aspect-ratio: 513 / 414;
+    margin-top: -12vw;
     transform-style: preserve-3d;
 }
 .rnd-stack.left {
-    left: -6vw;
-    transform: rotateY(18deg);
+    left: -4vw;
+    transform: rotateY(8deg);
 }
 .rnd-stack.right {
-    right: -6vw;
-    transform: rotateY(-18deg);
+    right: -4vw;
+    transform: rotateY(-8deg);
 }
 .rnd-stack img {
     position: absolute;
     inset: 0;
     width: 100%;
     height: 100%;
-    object-fit: cover;
-    border-radius: 8px;
-    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.15);
+    object-fit: contain;
+    filter: drop-shadow(0 10px 20px rgba(0, 0, 0, 0.15));
     will-change: transform, opacity;
 }
 .rnd-txt {
@@ -256,7 +256,7 @@ header {
     }
     .rnd-stack {
         width: 40vw;
-        margin-top: -15vw;
+        margin-top: -16vw;
     }
     .rnd-txt {
         padding: 40px 0;
