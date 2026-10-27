@@ -12,7 +12,29 @@
 </head>
 <body>
     <div id="wrap">
-        <header>제목공간</header>
+        <header>
+            <div class="top-bar">
+                <h1 class="logo">
+                    <a href="#">
+                        <span class="logo-mark">S</span>
+                        <span class="logo-txt">
+                            <strong>신풍제약주식회사</strong>
+                            <small>SHIN POONG PHARM. CO., LTD.</small>
+                        </span>
+                    </a>
+                </h1>
+            </div>
+            <nav class="gnb">
+                <ul>
+                    <li><a href="#">제품정보</a></li>
+                    <li><a href="#">R&amp;D</a></li>
+                    <li><a href="#">투자정보</a></li>
+                    <li><a href="#">채용정보</a></li>
+                    <li><a href="#">기업정보</a></li>
+                    <li><a href="#">뉴스</a></li>
+                </ul>
+            </nav>
+        </header>
         <main>
             <div class="hero-sec">
                 <!-- Slider main container -->
@@ -20,21 +42,25 @@
                     <!-- Additional required wrapper -->
                     <div class="swiper-wrapper">
                         <!-- Slides -->
-                        <div class="swiper-slide">
-                            <img src="img/image 129.png" alt="신풍제약1" class="pc">
-                            <img src="img/129and.png" alt="모바일신풍제약1" class="mo">
-                        </div>
-                        <div class="swiper-slide">
+                        <div class="swiper-slide dark">
                             <img src="img/image 130.png" alt="신풍제약2" class="pc">
                             <img src="img/130and.png" alt="모바일신풍제약2" class="mo">
+                            <div class="hero-txt pc">
+                                <h2>인류의 건강을 향한<br>신풍의 위대한 도전</h2>
+                                <p>자체 연구개발을 통해 축적한 기술과 경험으로<br>더 나은 치료의 가능성을 탐구합니다.</p>
+                            </div>
+                        </div>
+                        <div class="swiper-slide light">
+                            <img src="img/image 129.png" alt="신풍제약1" class="pc">
+                            <img src="img/129and.png" alt="모바일신풍제약1" class="mo">
+                            <div class="hero-txt pc">
+                                <h2>최신 의료 기술로<br>빠르고 간편하게</h2>
+                                <p>여러분의 건강을 지키는<br>가장 스마트한 선택, 신풍제약입니다.</p>
+                            </div>
                         </div>
                     </div>
                     <!-- If we need pagination -->
                     <div class="swiper-pagination"></div>
-
-                    <!-- If we need navigation buttons -->
-                    <div class="swiper-button-prev"></div>
-                    <div class="swiper-button-next"></div>
 
                     <!-- If we need scrollbar -->
                     <div class="swiper-scrollbar"></div>
@@ -48,17 +74,14 @@
             // Optional parameters
             direction: 'horizontal',
             loop: true,
+            autoplay: {
+                delay: 5000,
+            },
 
             // If we need pagination
             pagination: {
                 el: '.visual .swiper-pagination',
                 clickable: true,
-            },
-
-            // Navigation arrows
-            navigation: {
-                nextEl: '.visual .swiper-button-next',
-                prevEl: '.visual .swiper-button-prev',
             },
 
             // And if we need scrollbar
