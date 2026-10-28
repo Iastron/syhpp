@@ -236,10 +236,17 @@ header {
         height: 56px;
         padding: 0;
     }
-    /* 모바일 이미지는 글자가 이미 들어 있어서 덧칠 그라데이션은 끔 */
-    .hero-sec .dark::after,
-    .hero-sec .light::after {
-        display: none;
+    /* 모바일 히어로: 같은 사진을 꽉 채우고 문구는 작게 */
+    .hero-txt {
+        left: 20px;
+        right: 20px;
+    }
+    .hero-txt h2 {
+        font-size: 30px;
+    }
+    .hero-txt p {
+        margin-top: 16px;
+        font-size: 14px;
     }
     /* 고정 헤더(로고 줄) 높이만큼 내려서 이미지 윗부분이 가려지지 않게 */
     .hero-sec {
