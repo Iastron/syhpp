@@ -1,6 +1,38 @@
+:root {
+    /* 피그마 variables - 기본 색(Primitive) */
+    --green-500: #00ab51;
+    --green-700: #007a3d;
+    --blue-600: #0056b8;
+    --neutral-0: #ffffff;
+    --neutral-50: #f5f8f7;
+    --neutral-200: #d7e1dc;
+    --neutral-600: #576861;
+    --neutral-900: #172b25;
+
+    /* 피그마 variables - 쓰임새별 색(Sementic) */
+    --text-primary: var(--neutral-900);
+    --text-link: var(--blue-600);
+    --text-secondary: var(--neutral-600);
+    --text-inverse: var(--neutral-0);
+    --background-default: var(--neutral-0);
+    --background-subtle: var(--neutral-50);
+    --surface-default: var(--neutral-0);
+    --surface-subtle: var(--neutral-50);
+    --border-subtle: var(--neutral-200);
+    --border-input: var(--neutral-600);
+    --border-focus: var(--blue-600);
+    --action-primary-background: var(--green-700);
+    --action-primary-hover: var(--neutral-900);
+    --action-primary-text: var(--neutral-0);
+    --action-secondary-background: var(--neutral-0);
+    --action-secondary-text: var(--green-700);
+    --action-secondary-border: var(--green-700);
+    --accent-brand: var(--green-500);
+    --accent-emphasis: var(--green-700);
+}
 body {
-    background-color:
-    rgb(72, 168, 82);
+    background-color: var(--background-default);
+    color: var(--text-primary);
     font-family:
     "Pretendard Variable",
     sans-serif;
@@ -17,7 +49,7 @@ body {
 
 /* 헤더 - 피그마 메인 (흰 로고 줄 + 초록 메뉴 줄) */
 header {
-    background-color: #fff;
+    background-color: var(--surface-default);
 }
 .top-bar {
     display: flex;
@@ -31,7 +63,7 @@ header {
     width: 160px;
 }
 .gnb {
-    background-color: #00843d;
+    background-color: var(--accent-emphasis);
 }
 .gnb ul {
     display: flex;
@@ -42,7 +74,7 @@ header {
 .gnb a {
     display: block;
     padding: 10px 20px;
-    color: #fff;
+    color: var(--text-inverse);
     font-size: 15px;
 }
 .gnb a:hover {
@@ -70,7 +102,7 @@ header {
     top: 50%;
     left: 12%;
     transform: translateY(-50%);
-    color: #222;
+    color: var(--text-primary);
 }
 /* 어두운 슬라이드는 왼쪽을 살짝 어둡게 깔아서 흰 글자가 잘 보이게 */
 .hero-sec .dark::after {
@@ -90,7 +122,7 @@ header {
     z-index: 1;
 }
 .hero-sec .dark .hero-txt {
-    color: #fff;
+    color: var(--text-inverse);
     text-shadow: 0 2px 8px rgba(0, 0, 0, 0.3);
 }
 .hero-txt h2 {
@@ -111,34 +143,21 @@ header {
 .hero-sec .visual .swiper-pagination-bullet {
     width: 8px;
     height: 8px;
-    background-color: #fff;
+    background-color: var(--neutral-0);
     opacity: 0.7;
 }
 .hero-sec .visual .swiper-pagination-bullet-active {
     width: 24px;
     border-radius: 4px;
-    background-color: #00843d;
+    background-color: var(--accent-emphasis);
     opacity: 1;
 }
-/* 스크롤바 */
-.hero-sec .visual .swiper-scrollbar {
-    left: 50%;
-    bottom: 12px;
-    width: 200px;
-    height: 3px;
-    transform: translateX(-50%);
-    background-color: rgba(255, 255, 255, 0.5);
-}
-.hero-sec .visual .swiper-scrollbar-drag {
-    background-color: #00843d;
-}
-
 /* 두 번째 섹션 - R&D (삼천리 Who We Are 방식)
    섹션을 300vh로 길게 두고, 안쪽(.rnd-inner)을 화면에 고정(sticky)
    스크롤하는 동안 양옆 사진 3장이 안쪽 깊은 곳에서 차례대로 앞으로 다가옴 */
 .rnd-sec {
     height: 300vh;
-    background-color: #fff;
+    background-color: var(--background-default);
 }
 .rnd-inner {
     position: sticky;
@@ -148,24 +167,20 @@ header {
     align-items: center;
     height: 100vh;
     overflow: clip;
-    perspective: 1000px;
 }
-/* 사진 자체에 비스듬한 원근이 들어 있어서 상자는 살짝만 돌림 */
+/* 사진 자체에 비스듬한 원근이 들어 있어서 따로 돌리지 않음 */
 .rnd-stack {
     position: absolute;
     top: 50%;
-    width: 30vw;
+    width: 26vw;
     aspect-ratio: 513 / 414;
-    margin-top: -12vw;
-    transform-style: preserve-3d;
+    margin-top: -10.5vw;
 }
 .rnd-stack.left {
-    left: -4vw;
-    transform: rotateY(8deg);
+    left: 2vw;
 }
 .rnd-stack.right {
-    right: -4vw;
-    transform: rotateY(-8deg);
+    right: 2vw;
 }
 .rnd-stack img {
     position: absolute;
@@ -179,41 +194,40 @@ header {
 .rnd-txt {
     position: relative;
     z-index: 1;
-    padding: 60px 80px;
-    /* 뒤로 지나가는 사진 위에서도 글자가 읽히도록 가운데만 흰빛을 깔아 줌 */
-    background: radial-gradient(closest-side, rgba(255, 255, 255, 0.95), rgba(255, 255, 255, 0.8) 60%, rgba(255, 255, 255, 0));
     text-align: center;
 }
 .rnd-label {
-    color: #00843d;
+    color: var(--accent-emphasis);
     font-size: 16px;
     font-weight: 600;
 }
 .rnd-txt h2 {
     margin-top: 16px;
-    color: #222;
+    color: var(--text-primary);
     font-size: 36px;
     font-weight: 700;
     line-height: 1.4;
 }
 .rnd-desc {
     margin-top: 20px;
-    color: #666;
+    color: var(--text-secondary);
     font-size: 16px;
     line-height: 1.7;
 }
+/* 피그마 action/secondary 버튼, 마우스를 올리면 action/primary 색 */
 .rnd-btn {
     display: inline-block;
     margin-top: 32px;
     padding: 8px 24px;
+    border: 1px solid var(--action-secondary-border);
     border-radius: 20px;
-    background-color: #e6f3ec;
-    color: #00843d;
+    background-color: var(--action-secondary-background);
+    color: var(--action-secondary-text);
     font-size: 14px;
 }
 .rnd-btn:hover {
-    background-color: #00843d;
-    color: #fff;
+    background-color: var(--action-primary-background);
+    color: var(--action-primary-text);
 }
 
 @media (max-width: 1024px) {
@@ -261,12 +275,16 @@ header {
         height: calc(100dvh - 56px);
         padding: 0 20px;
     }
-    .rnd-stack {
-        width: 40vw;
-        margin-top: -16vw;
+    /* 모바일: 문구는 위쪽, 사진 묶음은 아래 양쪽에 두어 글자와 겹치지 않게 */
+    .rnd-inner {
+        align-items: flex-start;
+        padding-top: 48px;
     }
-    .rnd-txt {
-        padding: 40px 0;
+    .rnd-stack {
+        top: auto;
+        bottom: 48px;
+        width: 40vw;
+        margin-top: 0;
     }
     .rnd-txt h2 {
         font-size: 24px;

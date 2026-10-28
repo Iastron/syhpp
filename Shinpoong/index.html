@@ -78,18 +78,31 @@
             direction: 'horizontal',
         });
 
-        // R&D 섹션: 삼천리 Who We Are처럼 스크롤 진행도(0~1)에 맞춰
-        // 사진 3장이 안쪽 깊은 곳(x, z)에서 앞으로 다가오고, 맨 앞 사진은 화면 밖으로 빠져나감
+        // R&D 섹션: 양옆 사진 3장이 겹쳐 쌓여 있다가, 스크롤하면 한 장씩 앞으로 나옴
+        // 사진은 자기 쪽 가장자리 안에서만 움직이고 가운데 글자 쪽으로는 넘어가지 않음
         const rndSec = document.querySelector('.rnd-sec');
-        const rndCards = [
-            // [시작 x, 끝 x, 시작 z, 끝 z, 시작 각도, 끝 각도, 시작 투명도, 끝 투명도] (x, z는 vw)
-            [0, -120, 0, 30, -2, 12, 1, 0.3],
-            [46, -60, -35, 21, -16, 6, 0.75, 1],
-            [122, 0, -92, 0, -28, -2, 0.4, 1]
+        // 자리(slot)별 위치: 2 = 맨 뒤, 1 = 가운데, 0 = 맨 앞, -1/-2 = 바깥으로 빠져나감
+        // [자리, x(vw), z(px), 투명도]
+        const rndSlots = [
+            [-2, -30, 300, 0],
+            [-1, -15, 150, 0],
+            [0, 0, 0, 1],
+            [1, 4, -200, 0.9],
+            [2, 7, -400, 0.7]
         ];
 
-        function lerp(a, b, t) {
-            return a + (b - a) * t;
+        // 자리 번호(소수 가능)에 맞는 위치를 앞뒤 자리 사이에서 계산
+        function slotValue(slot) {
+            slot = Math.min(Math.max(slot, -2), 2);
+            for (let i = 0; i < rndSlots.length - 1; i++) {
+                const a = rndSlots[i];
+                const b = rndSlots[i + 1];
+                if (slot <= b[0]) {
+                    const t = slot - a[0];
+                    return [a[1] + (b[1] - a[1]) * t, a[2] + (b[2] - a[2]) * t, a[3] + (b[3] - a[3]) * t];
+                }
+            }
+            return rndSlots[rndSlots.length - 1].slice(1);
         }
 
         function updateRnd() {
@@ -102,13 +115,14 @@
                 // 오른쪽은 왼쪽을 거울처럼 뒤집음
                 const dir = stack.classList.contains('right') ? -1 : 1;
                 stack.querySelectorAll('img').forEach(function (img, i) {
-                    const c = rndCards[i];
-                    const x = lerp(c[0], c[1], p) * vw * dir;
-                    const z = lerp(c[2], c[3], p) * vw;
-                    // 사진에 이미 기울기가 있어서 회전은 절반만
-                    const r = lerp(c[4], c[5], p) * dir * 0.5;
-                    img.style.transform = 'translate3d(' + x + 'px, 0, ' + z + 'px) rotateY(' + r + 'deg)';
-                    img.style.opacity = lerp(c[6], c[7], Math.min(p * 2, 1));
+                    // 스크롤 끝까지 가면 모든 사진이 두 자리씩 앞으로 이동
+                    const slot = i - p * 2;
+                    const v = slotValue(slot);
+                    // perspective를 사진마다 넣어서 자기 자리에서 작아지게(화면 가운데로 끌려가지 않게)
+                    img.style.transform = 'perspective(1000px) translate3d(' + v[0] * vw * dir + 'px, 0, ' + v[1] + 'px)';
+                    img.style.opacity = v[2];
+                    // 앞에 있는 사진이 위로 오게
+                    img.style.zIndex = Math.round(10 - slot * 2);
                 });
             });
         }
