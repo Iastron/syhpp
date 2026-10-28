@@ -69,13 +69,68 @@
                 </div>
                 </div>
             </section>
+            <!-- 제품 슬라이더: 사진에 마우스를 올리면 어둡게 덮이고 제품 이름이 나옴 -->
+            <section class="prd-sec">
+                <h2 class="prd-title">당신의 건강을 위해,<br>신풍이 언제나 보이지 않는 곳에서 함께합니다.</h2>
+                <div class="prd-wrap">
+                    <!-- Slider main container -->
+                    <div class="swiper prd-slider">
+                        <!-- Additional required wrapper -->
+                        <div class="swiper-wrapper">
+                            <!-- Slides -->
+                            <div class="swiper-slide">
+                                <a href="#" class="prd-card">
+                                    <img src="img/product1.png" alt="칸데암로">
+                                    <span class="prd-name">칸데암로</span>
+                                </a>
+                            </div>
+                            <div class="swiper-slide">
+                                <a href="#" class="prd-card">
+                                    <img src="img/product2.png" alt="피라맥스">
+                                    <span class="prd-name">피라맥스</span>
+                                </a>
+                            </div>
+                            <div class="swiper-slide">
+                                <a href="#" class="prd-card">
+                                    <img src="img/product3.png" alt="에제로수">
+                                    <span class="prd-name">에제로수</span>
+                                </a>
+                            </div>
+                            <div class="swiper-slide">
+                                <a href="#" class="prd-card fit">
+                                    <img src="img/product4.png" alt="메디커튼">
+                                    <span class="prd-name">메디커튼</span>
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                    <button type="button" class="prd-prev" aria-label="이전 제품">&larr;</button>
+                    <button type="button" class="prd-next" aria-label="다음 제품">&rarr;</button>
+                </div>
+                <a href="#" class="prd-btn">자세히 보기</a>
+            </section>
         </main>
         <footer>&copy;</footer>
     </div>
     <script>
         // 히어로는 지금 사진 한 장이라 넘김 기능 없이 실행만 해 둠
-        const swiper = new Swiper('.swiper', {
+        const swiper = new Swiper('.visual', {
             direction: 'horizontal',
+        });
+
+        // 제품 슬라이더: 카드 너비는 CSS에서 정하고(auto), 파란 화살표로 넘김
+        const prdSlider = new Swiper('.prd-slider', {
+            slidesPerView: 'auto',
+            spaceBetween: 16,
+            navigation: {
+                prevEl: '.prd-prev',
+                nextEl: '.prd-next',
+            },
+            breakpoints: {
+                1024: {
+                    spaceBetween: 45,
+                }
+            }
         });
 
         // R&D 섹션: 양옆 사진 3장이 겹쳐 쌓여 있다가, 스크롤하면 한 장씩 앞으로 나옴
