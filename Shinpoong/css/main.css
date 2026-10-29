@@ -342,6 +342,42 @@ header {
     background-color: var(--border-subtle);
 }
 
+/* 네 번째 섹션 - 회사 소개 (피그마: 높이 900px)
+   배경 사진에 검은 막(35%)이 이미 들어 있어서 따로 덮지 않음 */
+.cmp-sec {
+    height: 900px;
+    padding: 102px 0 0 171px;
+    background: url(../img/company-bg.png) center / cover no-repeat;
+}
+.cmp-txt {
+    color: var(--text-inverse);
+}
+.cmp-txt h2 {
+    font-size: 54px;
+    font-weight: 800;
+    line-height: 1.45;
+}
+.cmp-txt p {
+    margin-top: 54px;
+    font-size: 20px;
+    line-height: 1.5;
+}
+/* 흰 테두리 버튼, 마우스를 올리면 흰 바탕에 초록 글자 */
+.cmp-btn {
+    display: inline-block;
+    margin-top: 92px;
+    padding: 12px 24px;
+    border: 2px solid var(--neutral-0);
+    border-radius: 9999px;
+    color: var(--text-inverse);
+    font-size: 22px;
+    font-weight: 600;
+}
+.cmp-btn:hover {
+    background-color: var(--neutral-0);
+    color: var(--accent-emphasis);
+}
+
 @media (max-width: 1024px) {
     .pc {
         display: none;
@@ -439,6 +475,24 @@ header {
     }
     .prd-btn {
         margin-top: 32px;
+        padding: 10px 20px;
+        font-size: 16px;
+    }
+    /* 회사 소개: 높이를 줄이고 글자를 작게 */
+    .cmp-sec {
+        height: auto;
+        min-height: 480px;
+        padding: 60px 20px;
+    }
+    .cmp-txt h2 {
+        font-size: 28px;
+    }
+    .cmp-txt p {
+        margin-top: 24px;
+        font-size: 15px;
+    }
+    .cmp-btn {
+        margin-top: 40px;
         padding: 10px 20px;
         font-size: 16px;
     }
