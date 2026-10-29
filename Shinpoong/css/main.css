@@ -460,6 +460,43 @@ header {
     font-size: 20px;
 }
 
+/* 푸터 (피그마: 높이 325px, 연한 배경, 글자는 왼쪽에서 205px) */
+footer {
+    min-height: 325px;
+    padding: 65px 205px 40px;
+    background-color: var(--background-subtle);
+    font-size: 16px;
+    line-height: 1.5;
+}
+.ft-links {
+    display: flex;
+}
+.ft-links a {
+    color: var(--text-primary);
+    font-weight: 600;
+}
+/* 개인정보처리방침만 더 굵게 */
+.ft-links .ft-privacy {
+    font-weight: 800;
+}
+/* 메뉴 사이 구분선 | */
+.ft-links li + li::before {
+    content: "|";
+    margin: 0 10px;
+    color: var(--border-subtle);
+    font-weight: 700;
+}
+.ft-info {
+    margin-top: 33px;
+    color: var(--text-secondary);
+    font-style: normal;
+    font-weight: 500;
+}
+.ft-copy {
+    margin-top: 24px;
+    color: var(--text-secondary);
+}
+
 @media (max-width: 1024px) {
     .pc {
         display: none;
@@ -627,5 +664,20 @@ header {
     .ntc-empty {
         margin-top: 32px;
         font-size: 15px;
+    }
+    /* 푸터: 양옆 여백을 줄이고 글자를 작게 */
+    footer {
+        min-height: 0;
+        padding: 40px 20px;
+        font-size: 13px;
+    }
+    .ft-links li + li::before {
+        margin: 0 6px;
+    }
+    .ft-info {
+        margin-top: 20px;
+    }
+    .ft-copy {
+        margin-top: 16px;
     }
 }
