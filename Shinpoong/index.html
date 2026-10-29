@@ -117,6 +117,42 @@
                     <a href="#" class="cmp-btn">자세히 보기 &rarr;</a>
                 </div>
             </section>
+            <!-- 입찰/채용 공고: 탭을 누르면 그 종류의 공고만 보임 -->
+            <section class="ntc-sec">
+                <h2 class="ntc-title">입찰/채용 공고</h2>
+                <div class="ntc-tabs">
+                    <button type="button" class="ntc-tab on" data-type="all">전체공고</button>
+                    <button type="button" class="ntc-tab" data-type="bid">입찰공고</button>
+                    <button type="button" class="ntc-tab" data-type="job">채용공고</button>
+                </div>
+                <ul class="ntc-list">
+                    <li data-type="job">
+                        <a href="#" class="ntc-card">
+                            <span class="ntc-label">채용공고</span>
+                            <strong class="ntc-name">2026년 하반기 개발본부<br>사업개발팀 경력 채용</strong>
+                            <p class="ntc-desc">신풍이 추구하는 인재상은 미래를 이끌어갈<br>여러분입니다.</p>
+                            <span class="ntc-date">2026.10.23 ~ 2026.11.08</span>
+                        </a>
+                    </li>
+                    <li data-type="job">
+                        <a href="#" class="ntc-card">
+                            <span class="ntc-label">채용공고</span>
+                            <strong class="ntc-name">신풍제약 상시채용(인재DB)</strong>
+                            <p class="ntc-desc">상시 인재채용 시스템<br>해당 건은 상시 채용으로 시기에 관계없이<br>적합한 대상이 있을 때마다 수시로 채용 절차가<br>이루어지며, 합격자에 한하여 개별 연락 드립니다.</p>
+                            <span class="ntc-date">2018.01.01 ~ 2028.12.31</span>
+                        </a>
+                    </li>
+                    <li data-type="job">
+                        <a href="#" class="ntc-card">
+                            <span class="ntc-label">채용공고</span>
+                            <strong class="ntc-name">2026년 생산본부 기술경영팀<br>경력 채용(오송)</strong>
+                            <p class="ntc-desc">신풍이 추구하는 인재상은 미래를 이끌어갈<br>여러분입니다.</p>
+                            <span class="ntc-date">2018.01.01 ~ 2028.12.31</span>
+                        </a>
+                    </li>
+                </ul>
+                <p class="ntc-empty" hidden>등록된 공고가 없습니다.</p>
+            </section>
         </main>
         <footer>&copy;</footer>
     </div>
@@ -189,6 +225,26 @@
                 });
             });
         }
+        // 입찰/채용 공고 탭: 누른 탭만 파랗게, 같은 종류의 카드만 보이게
+        const ntcTabs = document.querySelectorAll('.ntc-tab');
+        const ntcItems = document.querySelectorAll('.ntc-list li');
+        ntcTabs.forEach(function (tab) {
+            tab.addEventListener('click', function () {
+                const type = tab.dataset.type;
+                let count = 0;
+                ntcTabs.forEach(function (t) {
+                    t.classList.toggle('on', t === tab);
+                });
+                ntcItems.forEach(function (item) {
+                    const show = type === 'all' || item.dataset.type === type;
+                    item.hidden = !show;
+                    if (show) count++;
+                });
+                // 보여줄 공고가 하나도 없으면 안내 문구
+                document.querySelector('.ntc-empty').hidden = count > 0;
+            });
+        });
+
         window.addEventListener('scroll', updateRnd);
         window.addEventListener('resize', updateRnd);
         updateRnd();

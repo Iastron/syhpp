@@ -378,6 +378,88 @@ header {
     color: var(--accent-emphasis);
 }
 
+/* 다섯 번째 섹션 - 입찰/채용 공고 (피그마: 높이 1000px, 탭 225x75, 카드 475x400) */
+.ntc-sec {
+    min-height: 1000px;
+    padding: 108px 20px 120px;
+    background-color: var(--background-default);
+    text-align: center;
+}
+.ntc-title {
+    color: var(--text-primary);
+    font-size: 62px;
+    font-weight: 900;
+    line-height: 79px;
+}
+.ntc-tabs {
+    display: flex;
+    justify-content: center;
+    gap: 21px;
+    margin-top: 81px;
+}
+/* 선택 안 된 탭: 연한 배경 + 파란 글자, 선택된 탭(.on): 파란 배경 + 흰 글자 */
+.ntc-tab {
+    width: 225px;
+    height: 75px;
+    border: 0;
+    border-radius: 92px;
+    background-color: var(--background-subtle);
+    color: var(--text-link);
+    font-family: inherit;
+    font-size: 24px;
+    font-weight: 600;
+    cursor: pointer;
+}
+.ntc-tab.on {
+    background-color: var(--blue-600);
+    color: var(--text-inverse);
+}
+.ntc-list {
+    display: flex;
+    justify-content: center;
+    gap: 53px;
+    margin-top: 65px;
+}
+.ntc-list li {
+    width: 475px;
+}
+.ntc-list li[hidden] {
+    display: none;
+}
+/* 카드: 회색 테두리 2px, 날짜는 카드 맨 아래에 붙임 */
+.ntc-card {
+    display: flex;
+    flex-direction: column;
+    height: 400px;
+    padding: 36px 35px;
+    border: 2px solid var(--border-input);
+    border-radius: 25px;
+    color: var(--text-secondary);
+    font-size: 20px;
+    line-height: 1.5;
+    text-align: left;
+}
+.ntc-card:hover {
+    border-color: var(--accent-emphasis);
+}
+.ntc-name {
+    margin-top: 12px;
+    color: var(--text-primary);
+    font-size: 30px;
+    font-weight: 700;
+}
+.ntc-desc {
+    margin-top: 16px;
+}
+.ntc-date {
+    margin-top: auto;
+}
+.ntc-empty {
+    margin-top: 65px;
+    color: var(--text-secondary);
+    font-size: 20px;
+}
+
 @media (max-width: 1024px) {
     .pc {
         display: none;
@@ -495,5 +577,55 @@ header {
         margin-top: 40px;
         padding: 10px 20px;
         font-size: 16px;
+    }
+    /* 입찰/채용 공고: 탭은 한 줄에 작게, 카드는 위아래로 쌓기 */
+    .ntc-sec {
+        min-height: 0;
+        padding: 60px 20px 80px;
+    }
+    .ntc-title {
+        font-size: 30px;
+        line-height: 1.3;
+    }
+    .ntc-tabs {
+        gap: 8px;
+        margin-top: 32px;
+    }
+    .ntc-tab {
+        width: auto;
+        height: 44px;
+        padding: 0 20px;
+        font-size: 15px;
+    }
+    .ntc-list {
+        flex-direction: column;
+        align-items: center;
+        gap: 16px;
+        margin-top: 32px;
+    }
+    .ntc-list li {
+        width: 100%;
+        max-width: 475px;
+    }
+    .ntc-card {
+        height: auto;
+        min-height: 240px;
+        padding: 24px;
+        border-radius: 16px;
+        font-size: 15px;
+    }
+    .ntc-name {
+        margin-top: 8px;
+        font-size: 20px;
+    }
+    .ntc-desc {
+        margin-top: 12px;
+    }
+    .ntc-date {
+        padding-top: 24px;
+    }
+    .ntc-empty {
+        margin-top: 32px;
+        font-size: 15px;
     }
 }
