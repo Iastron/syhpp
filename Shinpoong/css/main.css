@@ -40,6 +40,11 @@ body {
 .mo {
     display: none;
 }
+/* 섹션 안 내용 묶음: 너비를 맞춰 가운데 정렬 (여백은 섹션 padding으로) */
+.inner {
+    max-width: 1530px;
+    margin: 0 auto;
+}
 /* default.css의 overflow-x: hidden은 sticky(R&D 섹션 고정)를 깨뜨려서
    가로 넘침만 자르고 스크롤 상자는 만들지 않는 clip으로 바꿈 */
 html,
@@ -233,7 +238,7 @@ header {
 /* 세 번째 섹션 - 제품 슬라이더 (피그마: 카드 420px, 간격 45px, 모서리 25px)
    카드 3장이 가운데 오고, 4번째 카드는 오른쪽에 살짝 보이게 */
 .prd-sec {
-    padding: 84px 20px 120px;
+    padding: 110px 20px;
     background-color: var(--background-default);
     text-align: center;
     overflow: clip;
@@ -342,11 +347,11 @@ header {
     background-color: var(--border-subtle);
 }
 
-/* 네 번째 섹션 - 회사 소개 (피그마: 높이 900px)
+/* 네 번째 섹션 - 회사 소개 (선생님 피드백: 높이 700px)
    배경 사진에 검은 막(35%)이 이미 들어 있어서 따로 덮지 않음 */
 .cmp-sec {
-    height: 900px;
-    padding: 102px 0 0 171px;
+    height: 700px;
+    padding: 110px 20px;
     background: url(../img/company-bg.png) center / cover no-repeat;
 }
 .cmp-txt {
@@ -378,10 +383,9 @@ header {
     color: var(--accent-emphasis);
 }
 
-/* 다섯 번째 섹션 - 입찰/채용 공고 (피그마: 높이 1000px, 탭 225x75, 카드 475x400) */
+/* 다섯 번째 섹션 - 입찰/채용 공고 (피그마: 탭 225x75, 카드 475x400) */
 .ntc-sec {
-    min-height: 1000px;
-    padding: 108px 20px 120px;
+    padding: 110px 20px;
     background-color: var(--background-default);
     text-align: center;
 }
@@ -460,10 +464,10 @@ header {
     font-size: 20px;
 }
 
-/* 푸터 (피그마: 높이 325px, 연한 배경, 글자는 왼쪽에서 205px) */
+/* 푸터 (피그마: 높이 325px, 연한 배경) - 글자 위치는 .inner로 맞춤 */
 footer {
     min-height: 325px;
-    padding: 65px 205px 40px;
+    padding: 65px 20px 40px;
     background-color: var(--background-subtle);
     font-size: 16px;
     line-height: 1.5;
